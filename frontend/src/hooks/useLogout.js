@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 const useLogout = () => {
 	const [loading, setLoading] = useState(false);
 	const { setAuthUser } = useAuthContext();
-
 	const logout = async () => {
 		setLoading(true);
 		try {
@@ -17,7 +16,6 @@ const useLogout = () => {
 			if (data.error) {
 				throw new Error(data.error);
 			}
-
 			localStorage.removeItem("chat-user");
 			setAuthUser(null);
 		} catch (error) {
@@ -26,7 +24,6 @@ const useLogout = () => {
 			setLoading(false);
 		}
 	};
-
 	return { loading, logout };
 };
 export default useLogout;

@@ -13,8 +13,15 @@ const messageSchema = new mongoose.Schema(
 			required: true,
 		},
 		message: {
-			type: String,
-			required: true,
+			type: {
+				type: String,
+				enum: ["text", "image"],
+				required: true,
+			},
+			content: {
+				type: String,
+				required: true,
+			}
 		},
 		// createdAt, updatedAt
 	},

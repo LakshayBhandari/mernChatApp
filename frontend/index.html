@@ -6,8 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
   </head>
+ 
+  
   <body>
     <div id="root"></div>
+    <script>
+      if (typeof global === 'undefined') {
+        var global = window;
+      }
+    </script>
+    <link rel="stylesheet" type="text/css" href="/src/index.css">
+    <link rel="stylesheet" type="text/css" href="/src/pages/video/video.css">
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

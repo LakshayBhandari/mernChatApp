@@ -1,5 +1,5 @@
 import express from "express";
-import { getMessages, sendImage, sendMessage } from "../controllers/message.controller.js";
+import { getMessages, sendMessage } from "../controllers/message.controller.js";
 import protectRoute from "../middleware/protectRoute.js";
 import multer from "multer";
 const router = express.Router();
@@ -12,6 +12,5 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 router.get("/:id", protectRoute, getMessages);
 router.post("/send/:id",protectRoute,upload.single("file"),  sendMessage);
-router.post("/send/image/:id",protectRoute,upload.single("file"),  sendImage);
 
 export default router;

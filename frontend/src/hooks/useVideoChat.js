@@ -2,8 +2,8 @@ import { useState } from "react";
 import useConversation from "../zustand/useConversation";
 import toast from "react-hot-toast";
 
-const useSendImage = () => {
-	const [loading, setLoading] = useState(false);
+const useVideoChat = () => {
+	
 	const { messages, setMessages, selectedConversation } = useConversation();
 
 	const sendImage = async (message) => {
@@ -12,7 +12,7 @@ const useSendImage = () => {
       formData.append("file", file);
 		setLoading(true);
 		try {
-			const res = await fetch(`/api/messages/send/image/${selectedConversation._id}`, {
+			const res = await fetch(`/api/messages/videoCall/${selectedConversation._id}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -22,7 +22,7 @@ const useSendImage = () => {
 			const data = await res.json();
 			if (data.error) throw new Error(data.error);
 
-			setMessages([...messages, data]);
+			
 		} catch (error) {
 			toast.error(error.message);
 		} finally {
@@ -30,6 +30,6 @@ const useSendImage = () => {
 		}
 	};
 
-	return { sendImage, loading };
+	return { sendImage };
 };
-export default useSendImage;
+export default useVideoChat;

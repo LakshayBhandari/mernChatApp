@@ -3,17 +3,22 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
+import { NextUIProvider } from "@nextui-org/react";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
 import { SocketContextProvider } from "./context/SocketContext.jsx";
-
+import { SocketProvider } from "./context/SocketProvider";
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<AuthContextProvider>
-				<SocketContextProvider>
-					<App />
-				</SocketContextProvider>
-			</AuthContextProvider>
-		</BrowserRouter>
-	</React.StrictMode>
+  <React.StrictMode>
+    <NextUIProvider>
+      <BrowserRouter>
+        <AuthContextProvider>
+          <SocketProvider>         
+             <SocketContextProvider>
+            <App />
+          </SocketContextProvider>
+          </SocketProvider>
+        </AuthContextProvider>
+      </BrowserRouter>
+    </NextUIProvider>
+  </React.StrictMode>
 );

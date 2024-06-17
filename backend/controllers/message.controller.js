@@ -92,27 +92,6 @@ export const sendMessage = async (req, res) => {
   }
 };
 
-export const sendImage = async (req, res) => {
-  const result = await cloudinary.uploader.upload(req.file.path);
-  const imageUrl = result.secure_url;
-
-  console.log(imageUrl);
-  {
-    /*const { id: receiverId } = req.params;
-		const senderId = req.user._id;
-
-		let conversation = await Conversation.findOne({
-			participants: { $all: [senderId, receiverId] },
-		});
-
-		if (!conversation) {
-			conversation = await Conversation.create({
-				participants: [senderId, receiverId],
-			});
-		}*/
-  }
-};
-
 export const getMessages = async (req, res) => {
   try {
     const { id: userToChatId } = req.params;
